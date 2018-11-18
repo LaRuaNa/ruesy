@@ -1,51 +1,33 @@
 import 'package:flutter/material.dart';
 
-import 'package:ruesy/round_icon_button.dart';
+import 'package:ruesy/components/round_icon_button.dart';
 
 class CardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: _buildAppBar(context),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('cards!'),
-        ),
+        child: Text('cards!'),
       ),
       bottomNavigationBar: _buildBottomBar(),
     );
   }
 
-  Widget _buildAppBar() {
+  Widget _buildAppBar(context) {
     return new AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-      leading: new IconButton(
-        icon: new Icon(
-          Icons.person,
-          color: Colors.grey,
-          size: 40.0,
-        ),
-        onPressed: () {
-          // TODO:
-        },
-      ),
-      actions: <Widget>[
-        new IconButton(
+        backgroundColor: Colors.white,
+        elevation: 2.0,
+        leading: new IconButton(
           icon: new Icon(
-            Icons.chat_bubble,
-            color: Colors.grey,
-            size: 40.0,
+            Icons.arrow_back_ios,
+            color: Colors.pink,
+            size: 30.0,
           ),
           onPressed: () {
-            // TODO:
+            Navigator.pushNamed(context, '/home');
           },
-        )
-      ],
-    );
+        ));
   }
 
   Widget _buildBottomBar() {

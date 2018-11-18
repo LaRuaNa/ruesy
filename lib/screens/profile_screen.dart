@@ -1,32 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:ruesy/round_icon_button.dart';
-
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final navigationItems = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Profile")),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.favorite), title: Text("Favourite")),
-      BottomNavigationBarItem(icon: Icon(Icons.list), title: Text("List")),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.playlist_add_check), title: Text("Done")),
-    ];
-
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: ListView(
-        children: [_buildAvatar(), _buildVocabularyCounter()],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        items: navigationItems,
-        onTap: (index) {},
-        fixedColor: Colors.pink,
-        iconSize: 25.0,
-        type: BottomNavigationBarType.fixed,
-      ),
+    return ListView(
+      children: [_buildAvatar(), _buildVocabularyCounter()],
     );
   }
 
@@ -76,15 +54,6 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildAppBar() {
-    return new AppBar(
-      title: Text(
-        'Ruesy',
-        style: TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }

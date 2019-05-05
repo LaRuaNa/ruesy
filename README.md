@@ -1,6 +1,6 @@
 # ruesy
 
-Ruesy Easy Russian
+<img src="./demo.gif" width="300"/>
 
 ## Getting Started
 

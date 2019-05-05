@@ -1,14 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:ruesy/card_status.dart';
 
-import 'package:ruesy/components/round_icon_button.dart';
+import 'package:ruesy/widgets/round_icon_button.dart';
+import 'package:ruesy/widgets/word_card.dart';
 
-class CardScreen extends StatelessWidget {
+class CardScreen extends StatefulWidget {
+  CardScreen({Key key}) : super(key: key);
+  @override
+  _CardScreenState createState() => new _CardScreenState();
+}
+
+class _CardScreenState extends State<CardScreen> {
+  CardStatus _currentCardStatus = new CardStatus();
+  void initState() {
+    super.initState();
+    _currentCardStatus.addListener(_onCardStatusChange);
+  }
+
+  @override
+  void dispose() {
+    _currentCardStatus.removeListener(_onCardStatusChange);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(context),
       body: Center(
-        child: Text('cards!'),
+        child: Container(
+          child: WordCard(cardStatus: _currentCardStatus),
+        ),
       ),
       bottomNavigationBar: _buildBottomBar(),
     );
@@ -42,23 +64,27 @@ class CardScreen extends StatelessWidget {
             new RoundIconButton.large(
               icon: Icons.clear,
               iconColor: Colors.red,
-              onPressed: () {},
+              onPressed: () => _currentCardStatus.setUnknown(),
             ),
             new RoundIconButton.large(
               icon: Icons.favorite,
               iconColor: Colors.green,
-              onPressed: () {},
+              onPressed: () => _currentCardStatus.setFavourite(),
             ),
             new RoundIconButton.large(
               icon: Icons.check,
               iconColor: Colors.purple,
-              onPressed: () {
-                // TODO:
-              },
+              onPressed: () => _currentCardStatus.setKnown(),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _onCardStatusChange() {
+    if (_currentCardStatus != null) {
+      _currentCardStatus.removeListener(_onCardStatusChange);
+    }
   }
 }

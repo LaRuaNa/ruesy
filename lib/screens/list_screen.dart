@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:ruesy/widgets/word_entry.dart';
 
 class ListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: _buildFavouriteList(),
-    );
+    return ListView(children: [
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+      new WordEntry(),
+    ]);
   }
 
   Widget _buildFavouriteList() {
@@ -20,3 +31,5 @@ class ListScreen extends StatelessWidget {
     );
   }
 }
+
+

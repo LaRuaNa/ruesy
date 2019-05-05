@@ -3,20 +3,43 @@ import 'package:flutter/material.dart';
 class DoneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: _buildFavouriteList(),
+    return ListView(
+      children: [
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+        _buildWordCard(),
+      ],
     );
   }
 
-  Widget _buildFavouriteList() {
-    final items = List<String>.generate(10000, (i) => "Done $i");
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('${items[index]}'),
-        );
-      },
+  Widget _buildWordCard() {
+    return Card(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text('Говно', textAlign: TextAlign.start),
+                ),
+                Expanded(
+                  child: Text('Shite', textAlign: TextAlign.end),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
